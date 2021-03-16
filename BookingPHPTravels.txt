@@ -1,0 +1,248 @@
+PART1
+======
+
+scenarios:
+==========
+1. Login with valid credentials
+The user acces to web with valid credentials
+
+
+2. Entry Hotel booking data
+The user enters the bookin data as:
+- Destino
+- Booking data/  from-to- 
+- Number of guests
+
+
+3. Selection Rooms for booking
+the user can choose from a list of rooms according to his needs
+
+
+4. Booking
+is the reservation process of the chosen room:
+- Personal information
+- Extras
+- Payment process
+
+5 Booking confirmation
+the confirmation arrives by email after having made the payment successfully (reservation code)
+
+
+BUGS
+=====
+the access to the web with the attached credentials is not valid
+for a desired room, the system does not allow to select the available dates
+the system allows access to the personal records page without choosing the dates
+the system does not allow me to make immediate payment (credit card, transfer, etc)
+
+
+Prioritisation of those use cases
+=================================
+I would prioritize the Bookin scenario
+It is one of the important functionalities since personal data and payment data are added here, which is important information for the reservation
+
+
+What kind of risks do you need to mitigate for this type of application? 
+=======================================================================
+For me the most important risk to mitigate is the payment process
+
+
+
+
+
+PART2
+======
+
+//Definimos las Variables del Page//
+
+private JPanel contentPane;
+
+
+private JDestinationCombo JDestination;
+private JTextField Hotel;
+
+private JFechaIniField JFechaIni;
+private JFechaFinField JFechaFin;
+private JGuestField JGuest;
+
+private JLabel JLabelDestino,JLabelFechaIni,JLabelFechaFin,JLabelGuest ;
+
+private JBuscar JButtonBuscar;
+
+
+
+public Components() {
+
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+setBounds(100, 100, 205, 210);
+
+contentPane = new JPanel();
+
+contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+setContentPane(contentPane);
+
+contentPane.setLayout(null);
+
+setResizable(false);
+
+
+
+public static void main(String[] args) {
+		new TestJDestinationCombo();
+	}
+	
+	public TestJDestinationCombo()
+	{
+		// Creacion del JTextField
+		Hotel = new JTextField(20);
+		
+		// Creacion del JComboBox y añadir los items.
+		JDestination = new JComboBox();
+		JDestination.addItem("Hoteluno");
+		JDestination.addItem("Hoteldos");
+		JDestination.addItem("Hoteltres");
+		
+		// Accion a realizar cuando el JComboBox cambia de item seleccionado.
+		JDestination.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Hotel.setText(JDestination.getSelectedItem().toString());
+			}
+		});
+
+		// Creacion de la ventana con los componentes
+		v = new JFrame();
+		v.getContentPane().setLayout(new FlowLayout());
+		v.getContentPane().add(JDestination);
+		v.getContentPane().add(Hotel);
+		v.pack();
+		v.setVisible(true);
+		v.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+}
+
+
+
+
+//Etiqueta FechaIni//
+
+JLabelFechaIni = new JLabel(“Contrase\u00F1a”);
+
+JLabelFechaIni.setBounds(28, 59, 129, 14);
+
+contentPane.add(JLabelFechaIni);
+
+
+//Campo de Texto para FechaIni//
+
+JFechaIni = new JFechaIniField();
+
+JFechaIni.setBounds(28, 75, 129, 20);
+
+contentPane.add(JFechaIni);
+
+
+//Etiqueta FechaFin//
+
+JLabelFechaFin = new JLabel(“Contrase\u00F1a”);
+
+JLabelFechaFin.setBounds(28, 59, 129, 14);
+
+contentPane.add(JLabelFechaFin);
+
+
+//Campo de Texto para FechaFin//
+
+JFechaFin = new JFechaFinField();
+
+JFechaFin.setBounds(28, 75, 129, 20);
+
+contentPane.add(JFechaFin);
+
+
+//Etiqueta Guest//
+
+JLabelGuest = new JLabel(“Contrase\u00F1a”);
+
+JLabelGuest.setBounds(28, 59, 129, 14);
+
+contentPane.add(JLabelGuest);
+
+
+//Campo de Texto para Guest//
+
+JGuest = new JGuestField();
+
+JGuest.setBounds(28, 75, 129, 20);
+
+contentPane.add(JGuest);
+
+
+//Botón Buscar//
+
+JButtonBuscar = new JBuscar(“Buscar”);
+
+JButtonBuscar.addActionListener(new ActionListener() {
+
+
+
+
+public void actionPerformed(ActionEvent e) {
+
+//Creamos las Variables y el Método para validar los campos Hotel, FechaIni, FechaFin y Guest//
+
+String Hotel=””;
+Hotel=JTextField.getText();
+
+String FechaIni=””;
+FechaIni=JTextField.getText();
+
+String FechaFin=””;
+FechaFin=JTextField.getText();
+
+String Guest=””;
+Guest=JTextField.getText();
+
+
+//Asignamos el nombre de Hotel, FechaIni, FechaFin y Guest que queramos//
+
+//En este caso Hotel=RoyalDecameron ,  FechaIni=20/04/2021 FechaFin=20/05/2021 Guest= 2 //
+
+if(Hotel.equals(“RoyalDecameron”) && FechaIni.equals(“20/04/2021”) && FechaFin.equals(“0/05/2021”) && Guest.equals(“”)){
+
+JOptionPane.showMessageDialog(null, “Correcto”);
+
+System.out.println(“Busqueda Correcta”);
+
+}else{
+
+JOptionPane.showMessageDialog(null, “Datos Incorrectos”)
+
+System.out.println(“Busqueda Incorrecta”);
+
+}
+
+}
+
+});
+
+
+JButtonBuscar.setBounds(28, 121, 129, 23);
+
+contentPane.add(JButtonBuscar);
+
+}
+)
+
+
+
+PART3
+======
+
+- these are types of functional test, navigability, data validation
+
+
+
+
